@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: planning
-stopped_at: Phase 1 context gathered
-last_updated: "2026-03-21T02:48:32.224Z"
-last_activity: 2026-03-20 — Roadmap created; project initialized
+status: executing
+stopped_at: "Completed 01-foundation/01-01-PLAN.md"
+last_updated: "2026-03-21T03:14:24Z"
+last_activity: "2026-03-21 — Plan 01-01 complete: project scaffold and design token pipeline"
 progress:
   total_phases: 4
   completed_phases: 0
-  total_plans: 0
-  completed_plans: 0
-  percent: 0
+  total_plans: 9
+  completed_plans: 1
+  percent: 11
 ---
 
 # Project State
@@ -26,28 +26,28 @@ See: .planning/PROJECT.md (updated 2026-03-20)
 ## Current Position
 
 Phase: 1 of 4 (Foundation)
-Plan: 0 of 3 in current phase
-Status: Ready to plan
-Last activity: 2026-03-20 — Roadmap created; project initialized
+Plan: 1 of 3 in current phase
+Status: Executing
+Last activity: 2026-03-21 — Plan 01-01 complete: project scaffold and design token pipeline
 
-Progress: [░░░░░░░░░░] 0%
+Progress: [█░░░░░░░░░] 11%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 0
-- Average duration: — min
-- Total execution time: 0 hours
+- Total plans completed: 1
+- Average duration: 3 min
+- Total execution time: 0.05 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| - | - | - | - |
+| 01-foundation | 1/3 | 3 min | 3 min |
 
 **Recent Trend:**
-- Last 5 plans: —
-- Trend: —
+- Last 5 plans: 3 min
+- Trend: Baseline established
 
 *Updated after each plan completion*
 
@@ -62,6 +62,9 @@ Recent decisions affecting current work:
 - [Init]: No CSS framework in production theme; CSS custom properties only
 - [Init]: Newsreader + Inter as primary type stack (dominant across all page exports)
 - [Init]: barterbobs_* HTML exports are authoritative design source (not harvest_hearth or rustic_pantry)
+- [01-01]: Use {%- comment -%} blocks for Liquid file headers — {{- /* */ -}} inline syntax fails theme check LiquidHTMLSyntaxError
+- [01-01]: theme_documentation_url and theme_support_url require non-empty URI values in settings_schema.json (theme check ValidJSON rule)
+- [01-01]: Derived color tokens (surface-low/mid/high, text-secondary, outline variants) are hard-coded in css-variables.liquid, not merchant-configurable
 
 ### Pending Todos
 
@@ -71,10 +74,10 @@ None yet.
 
 - [Pre-Phase 3]: Subscription app (Shopify Subscriptions native vs. Recharge vs. Skio) must be confirmed and installed in dev store before Phase 3 PDP work can be functionally verified — selling plan Liquid objects vary by app
 - [Pre-Phase 2]: `collection.filters` (dietary tags: Gluten-Free, Vegan, Organic Only) requires product tags set in Shopify admin before Phase 2 filter UI can be verified
-- [Pre-Phase 1]: Newsreader and Inter font weights and load strategy (Google Fonts vs. Shopify font picker) must be resolved when writing settings_schema.json
+- [Pre-Phase 1]: Newsreader and Inter font weights and load strategy (Google Fonts vs. Shopify font picker) must be resolved when writing settings_schema.json — still pending for Plan 01-02
 
 ## Session Continuity
 
-Last session: 2026-03-21T02:48:32.219Z
-Stopped at: Phase 1 context gathered
-Resume file: .planning/phases/01-foundation/01-CONTEXT.md
+Last session: 2026-03-21T03:14:24Z
+Stopped at: Completed 01-foundation/01-01-PLAN.md
+Resume file: .planning/phases/01-foundation/01-02-PLAN.md
