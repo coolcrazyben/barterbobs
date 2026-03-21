@@ -29,12 +29,12 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. Resizing the browser to 375px collapses the header to a hamburger icon that opens a full-height off-canvas drawer
   4. Running `shopify theme check` returns zero errors and zero warnings on the skeleton theme
   5. The `.shopifyignore` file prevents `config/settings_data.json` from being overwritten on `shopify theme push`
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 01-01: Dev environment, project scaffold, settings schema, and CSS custom properties
-- [ ] 01-02: Global JS infrastructure (web components, pub/sub, section load handlers) and theme.liquid shell
-- [ ] 01-03: Header section (glassmorphism nav, cart badge, mobile hamburger drawer) and footer section
+- [ ] 01-01-PLAN.md — Dev environment, project scaffold, settings schema, and CSS custom properties
+- [ ] 01-02-PLAN.md — Global JS infrastructure (ShopifySection base class, pub/sub, CartCountBubble) and theme.liquid shell
+- [ ] 01-03-PLAN.md — Header section (glassmorphism nav, cart badge, mobile hamburger drawer) and footer section
 
 ### Phase 2: Homepage + PLP
 **Goal**: A shopper can land on the homepage and browse the full product catalog — every section matches the Figma exports, content is configurable in the Theme Editor, and the product grid supports Quick Add
