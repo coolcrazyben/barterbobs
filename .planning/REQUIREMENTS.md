@@ -97,49 +97,47 @@
 
 ## Traceability
 
-*Populated during roadmap creation.*
-
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| FNDX-01 | — | Pending |
-| FNDX-02 | — | Pending |
-| FNDX-03 | — | Pending |
-| FNDX-04 | — | Pending |
-| FNDX-05 | — | Pending |
-| FNDX-06 | — | Pending |
-| NAVX-01 | — | Pending |
-| NAVX-02 | — | Pending |
-| NAVX-03 | — | Pending |
-| NAVX-04 | — | Pending |
-| HOME-01 | — | Pending |
-| HOME-02 | — | Pending |
-| HOME-03 | — | Pending |
-| HOME-04 | — | Pending |
-| HOME-05 | — | Pending |
-| PLPX-01 | — | Pending |
-| PLPX-02 | — | Pending |
-| PLPX-03 | — | Pending |
-| PLPX-04 | — | Pending |
-| PDPX-01 | — | Pending |
-| PDPX-02 | — | Pending |
-| PDPX-03 | — | Pending |
-| PDPX-04 | — | Pending |
-| PDPX-05 | — | Pending |
-| PDPX-06 | — | Pending |
-| CART-01 | — | Pending |
-| CART-02 | — | Pending |
-| CART-03 | — | Pending |
-| CART-04 | — | Pending |
-| CART-05 | — | Pending |
-| CART-06 | — | Pending |
-| PAGE-01 | — | Pending |
-| PAGE-02 | — | Pending |
+| FNDX-01 | Phase 1 | Pending |
+| FNDX-02 | Phase 1 | Pending |
+| FNDX-03 | Phase 1 | Pending |
+| FNDX-04 | Phase 1 | Pending |
+| FNDX-05 | Phase 1 | Pending |
+| FNDX-06 | Phase 1 | Pending |
+| NAVX-01 | Phase 1 | Pending |
+| NAVX-02 | Phase 1 | Pending |
+| NAVX-03 | Phase 1 | Pending |
+| NAVX-04 | Phase 1 | Pending |
+| HOME-01 | Phase 2 | Pending |
+| HOME-02 | Phase 2 | Pending |
+| HOME-03 | Phase 2 | Pending |
+| HOME-04 | Phase 2 | Pending |
+| HOME-05 | Phase 2 | Pending |
+| PLPX-01 | Phase 2 | Pending |
+| PLPX-02 | Phase 2 | Pending |
+| PLPX-03 | Phase 2 | Pending |
+| PLPX-04 | Phase 2 | Pending |
+| PDPX-01 | Phase 3 | Pending |
+| PDPX-02 | Phase 3 | Pending |
+| PDPX-03 | Phase 3 | Pending |
+| PDPX-04 | Phase 3 | Pending |
+| PDPX-05 | Phase 3 | Pending |
+| PDPX-06 | Phase 3 | Pending |
+| CART-01 | Phase 3 | Pending |
+| CART-02 | Phase 3 | Pending |
+| CART-03 | Phase 3 | Pending |
+| CART-04 | Phase 3 | Pending |
+| CART-05 | Phase 3 | Pending |
+| CART-06 | Phase 3 | Pending |
+| PAGE-01 | Phase 4 | Pending |
+| PAGE-02 | Phase 4 | Pending |
 
 **Coverage:**
-- v1 requirements: 32 total
-- Mapped to phases: 0
-- Unmapped: 32 ⚠️
+- v1 requirements: 33 total
+- Mapped to phases: 33
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-03-20*
-*Last updated: 2026-03-20 after initial definition*
+*Last updated: 2026-03-20 — traceability populated after roadmap creation*
