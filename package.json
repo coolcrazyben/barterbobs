@@ -1,0 +1,14 @@
+{
+  "name": "barterbobs-theme",
+  "version": "1.0.0",
+  "description": "BarterBobs Shopify OS 2.0 custom theme",
+  "private": true,
+  "scripts": {
+    "format": "prettier --write '**/*.{liquid,json,css,js}'",
+    "check": "shopify theme check"
+  },
+  "devDependencies": {
+    "prettier": "^3.0.0",
+    "@shopify/prettier-plugin-liquid": "^1.5.0"
+  }
+}

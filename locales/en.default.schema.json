@@ -1,0 +1,54 @@
+{
+  "colors": {
+    "brand_primary": {
+      "label": "Brand primary color"
+    },
+    "brand_accent": {
+      "label": "Brand accent color"
+    },
+    "surface": {
+      "label": "Surface background"
+    },
+    "text": {
+      "label": "Body text color"
+    },
+    "text_muted": {
+      "label": "Muted text color"
+    }
+  },
+  "header": {
+    "name": "Header",
+    "settings": {
+      "menu": {
+        "label": "Navigation menu"
+      },
+      "show_cart": {
+        "label": "Show cart icon"
+      }
+    }
+  },
+  "footer": {
+    "name": "Footer",
+    "settings": {
+      "brand_text": {
+        "label": "Brand name"
+      },
+      "nav_menu": {
+        "label": "Footer navigation"
+      }
+    },
+    "blocks": {
+      "column": {
+        "name": "Link column",
+        "settings": {
+          "heading": {
+            "label": "Column heading"
+          },
+          "menu": {
+            "label": "Menu"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,4 @@
+# BarterBobs theme check configuration
+# Ref: https://shopify.dev/docs/themes/tools/theme-check
+ignore:
+  - config/settings_data.json
