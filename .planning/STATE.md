@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: "Completed 01-foundation/01-01-PLAN.md"
-last_updated: "2026-03-21T03:14:24Z"
+stopped_at: Completed 01-foundation/01-02-PLAN.md
+last_updated: "2026-03-21T03:19:29.939Z"
 last_activity: "2026-03-21 — Plan 01-01 complete: project scaffold and design token pipeline"
 progress:
   total_phases: 4
   completed_phases: 0
-  total_plans: 9
-  completed_plans: 1
+  total_plans: 3
+  completed_plans: 2
   percent: 11
 ---
 
@@ -50,6 +50,7 @@ Progress: [█░░░░░░░░░] 11%
 - Trend: Baseline established
 
 *Updated after each plan completion*
+| Phase 01-foundation P02 | 3 | 2 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -65,6 +66,9 @@ Recent decisions affecting current work:
 - [01-01]: Use {%- comment -%} blocks for Liquid file headers — {{- /* */ -}} inline syntax fails theme check LiquidHTMLSyntaxError
 - [01-01]: theme_documentation_url and theme_support_url require non-empty URI values in settings_schema.json (theme check ValidJSON rule)
 - [01-01]: Derived color tokens (surface-low/mid/high, text-secondary, outline variants) are hard-coded in css-variables.liquid, not merchant-configurable
+- [Phase 01-02]: Use <script type=module> for global.js — Liquid script_tag filter does not emit type=module, breaking ES module semantics
+- [Phase 01-02]: Newsreader uses preload+print/onload swap pattern to avoid LCP regression while preventing render-blocking
+- [Phase 01-02]: Section groups use plural {% sections %} tag — singular {% section %} does not support Theme Editor block management
 
 ### Pending Todos
 
@@ -78,6 +82,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-21T03:14:24Z
-Stopped at: Completed 01-foundation/01-01-PLAN.md
-Resume file: .planning/phases/01-foundation/01-02-PLAN.md
+Last session: 2026-03-21T03:19:29.934Z
+Stopped at: Completed 01-foundation/01-02-PLAN.md
+Resume file: None

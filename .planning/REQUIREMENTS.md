@@ -9,8 +9,8 @@
 
 - [x] **FNDX-01**: Theme uses Shopify OS 2.0 architecture — all templates are JSON files referencing section liquid files; no markup in template files
 - [x] **FNDX-02**: CSS design tokens (color palette, typography scale, spacing system) extracted from Figma exports and defined as CSS custom properties in `snippets/css-variables.liquid`
-- [ ] **FNDX-03**: Global JS infrastructure implemented as vanilla web components (`customElements.define`) with pubsub utility and `shopify:section:load`/`shopify:section:unload` handlers on every interactive section
-- [ ] **FNDX-04**: Every section exposes its settings via section schema blocks so merchants can customize content and appearance through the Shopify Theme Editor
+- [x] **FNDX-03**: Global JS infrastructure implemented as vanilla web components (`customElements.define`) with pubsub utility and `shopify:section:load`/`shopify:section:unload` handlers on every interactive section
+- [x] **FNDX-04**: Every section exposes its settings via section schema blocks so merchants can customize content and appearance through the Shopify Theme Editor
 - [x] **FNDX-05**: `config/settings_schema.json` defines global theme settings (colors, fonts, spacing) that populate CSS custom properties via `snippets/css-variables.liquid`
 - [x] **FNDX-06**: `.shopifyignore` includes `config/settings_data.json` to prevent CLI overwrites of live store content
 
@@ -101,8 +101,8 @@
 |-------------|-------|--------|
 | FNDX-01 | Phase 1 | Complete |
 | FNDX-02 | Phase 1 | Complete |
-| FNDX-03 | Phase 1 | Pending |
-| FNDX-04 | Phase 1 | Pending |
+| FNDX-03 | Phase 1 | Complete |
+| FNDX-04 | Phase 1 | Complete |
 | FNDX-05 | Phase 1 | Complete |
 | FNDX-06 | Phase 1 | Complete |
 | NAVX-01 | Phase 1 | Pending |
