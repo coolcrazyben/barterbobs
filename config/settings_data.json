@@ -1,0 +1,11 @@
+{
+  "current": {
+    "color_brand_primary": "#b5092d",
+    "color_brand_accent": "#d92d43",
+    "color_surface": "#faf8ff",
+    "color_text": "#121a33",
+    "color_text_muted": "#5b4040",
+    "base_font_size": 16,
+    "section_gap": "default"
+  }
+}

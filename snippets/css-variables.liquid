@@ -1,0 +1,54 @@
+{%- comment -%}
+  snippets/css-variables.liquid
+  Outputs :root CSS custom properties from global theme settings.
+  Rendered inside <head> via {%- render 'css-variables' -%} in theme.liquid
+{%- endcomment -%}
+<style>
+  :root {
+    /* Merchant-configurable brand colors */
+    --color-brand-primary: {{ settings.color_brand_primary }};
+    --color-brand-accent: {{ settings.color_brand_accent }};
+    --color-surface: {{ settings.color_surface }};
+    --color-text: {{ settings.color_text }};
+    --color-text-muted: {{ settings.color_text_muted }};
+
+    /* Derived semantic tokens — not merchant-configurable */
+    --color-surface-low: #f2f3ff;
+    --color-surface-mid: #ebedff;
+    --color-surface-high: #e3e7ff;
+    --color-surface-highest: #dbe1ff;
+    --color-text-secondary: #366476;
+    --color-outline: #8f6f6f;
+    --color-outline-variant: #e4bdbd;
+    --color-nav-bg: rgba(250, 248, 255, 0.80);
+
+    /* Section spacing — editorial vertical rhythm from Figma */
+    {%- if settings.section_gap == 'compact' -%}
+      --section-gap: 6rem;
+      --section-gap-sm: 3rem;
+    {%- elsif settings.section_gap == 'spacious' -%}
+      --section-gap: 16rem;
+      --section-gap-sm: 8rem;
+    {%- else -%}
+      --section-gap: 12rem;
+      --section-gap-sm: 6rem;
+    {%- endif -%}
+
+    /* Animation tokens — consistent micro-interactions */
+    --transition-base: 200ms ease;
+    --transition-fast: 120ms ease;
+
+    /* Border radius */
+    --radius-sm: 0.5rem;
+    --radius-md: 0.75rem;
+    --radius-lg: 1.5rem;
+    --radius-full: 9999px;
+
+    /* Typography */
+    --font-headline: 'Newsreader', serif;
+    --font-body: 'Inter', sans-serif;
+
+    /* Base font size from settings */
+    --font-size-base: {{ settings.base_font_size }}px;
+  }
+</style>

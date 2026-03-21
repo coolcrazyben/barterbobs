@@ -1,0 +1,111 @@
+/* assets/base.css — BarterBobs base styles */
+/* Do not add hex colors here; use CSS custom properties from :root */
+
+/* Box-sizing reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Base typography */
+html {
+  font-size: var(--font-size-base, 16px);
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text);
+  background-color: var(--color-surface);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Heading styles — Newsreader serif */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-headline);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--color-text);
+}
+
+/* Link base */
+a {
+  color: var(--color-brand-primary);
+  text-decoration: none;
+  transition: color var(--transition-base);
+}
+
+a:hover {
+  color: var(--color-brand-accent);
+}
+
+/* Image defaults */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* Form element reset */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Visually hidden utility — for screen reader text */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Skip to content link (accessibility) */
+.skip-to-content-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 9999;
+  padding: 0.5rem 1rem;
+  background: var(--color-brand-primary);
+  color: #fff;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  transition: top var(--transition-fast);
+}
+
+.skip-to-content-link:focus {
+  top: 1rem;
+}
+
+/* Page content area */
+.content-for-layout {
+  min-height: 60vh;
+}
+
+/* Hero gradient utility — used on CTA buttons and numbered circles */
+.gradient-brand {
+  background: linear-gradient(135deg, var(--color-brand-primary) 0%, var(--color-brand-accent) 100%);
+}

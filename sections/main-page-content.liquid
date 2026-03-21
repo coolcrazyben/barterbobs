@@ -1,0 +1,25 @@
+{%- comment -%}
+  sections/main-page-content.liquid
+  Stub section — replaced with full implementations in Phase 2 and 4
+{%- endcomment -%}
+<div class="main-page-content">
+  {{ section.settings.content }}
+</div>
+
+{% schema %}
+{
+  "name": "Page content",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Content"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Page content"
+    }
+  ]
+}
+{% endschema %}
