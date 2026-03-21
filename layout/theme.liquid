@@ -1,0 +1,76 @@
+{{- /* layout/theme.liquid — BarterBobs Shopify OS 2.0 theme shell */ -}}
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#b5092d">
+
+    <title>
+      {{ page_title }}
+      {%- if current_tags %} &ndash; tagged &ldquo;{{ current_tags | join: ', ' }}&rdquo;{% endif -%}
+      {%- if current_page != 1 %} &ndash; {{ 'general.meta.page' | t: page_number: current_page }}{% endif -%}
+      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+    </title>
+
+    {%- if page_description -%}
+      <meta name="description" content="{{ page_description | escape }}">
+    {%- endif -%}
+
+    <link rel="canonical" href="{{ canonical_url }}">
+
+    {%- if settings.favicon != blank -%}
+      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+    {%- endif -%}
+
+    <!-- Google Fonts: preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Newsreader: preload (display/headline font — LCP-critical) -->
+    <!-- Using print+onload swap to prevent render-blocking while still preloading -->
+    <link rel="preload" as="style"
+      href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,600;1,400;1,600&display=swap">
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,600;1,400;1,600&display=swap"
+      media="print" onload="this.media='all'">
+    <noscript>
+      <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,600;1,400;1,600&display=swap">
+    </noscript>
+
+    <!-- Inter: standard stylesheet load (not render-blocking for hero) -->
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+
+    <!-- Design tokens: CSS custom properties from settings -->
+    {%- render 'css-variables' -%}
+
+    <!-- Base styles -->
+    {{ 'base.css' | asset_url | stylesheet_tag }}
+
+    {{ content_for_header }}
+  </head>
+
+  <body class="gradient-{{ request.page_type }}">
+
+    <a class="skip-to-content-link button" href="#MainContent">
+      {{ 'general.skip_to_content' | t }}
+    </a>
+
+    <!-- Header section group (OS 2.0 plural tag — enables Theme Editor customization) -->
+    {% sections 'header-group' %}
+
+    <main id="MainContent" class="content-for-layout" role="main" tabindex="-1">
+      {{ content_for_layout }}
+    </main>
+
+    <!-- Footer section group (OS 2.0 plural tag) -->
+    {% sections 'footer-group' %}
+
+    <!-- Global JS: ShopifySection base class, pub/sub, cart badge -->
+    <!-- type="module" required — do NOT use | script_tag filter (no module support) -->
+    <script type="module" src="{{ 'global.js' | asset_url }}" defer></script>
+
+  </body>
+</html>
