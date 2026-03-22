@@ -31,10 +31,10 @@
 
 ### Product Listing Page
 
-- [ ] **PLPX-01**: Collection page uses a responsive grid layout (4 columns at 1280px, 2 columns at 768px, 1 column at 375px) matching the Figma PLP export
-- [ ] **PLPX-02**: Product card snippet renders product image (hover scale 1.05x), title, price, and CTA button with rounded corners and tonal elevation (no border)
-- [ ] **PLPX-03**: Collection page includes filtering via Shopify Search & Discovery app-compatible filter UI with sidebar categories on desktop, collapsible on mobile
-- [ ] **PLPX-04**: Product card includes a Quick Add button that adds the product to the cart via AJAX and opens the cart drawer without navigating away from the collection
+- [x] **PLPX-01**: Collection page uses a responsive grid layout (4 columns at 1280px, 2 columns at 768px, 1 column at 375px) matching the Figma PLP export
+- [x] **PLPX-02**: Product card snippet renders product image (hover scale 1.05x), title, price, and CTA button with rounded corners and tonal elevation (no border)
+- [x] **PLPX-03**: Collection page includes filtering via Shopify Search & Discovery app-compatible filter UI with sidebar categories on desktop, collapsible on mobile
+- [x] **PLPX-04**: Product card includes a Quick Add button that adds the product to the cart via AJAX and opens the cart drawer without navigating away from the collection
 
 ### Product Detail Page
 
@@ -114,10 +114,10 @@
 | HOME-03 | Phase 2 | Complete |
 | HOME-04 | Phase 2 | Complete |
 | HOME-05 | Phase 2 | Complete |
-| PLPX-01 | Phase 2 | Pending |
-| PLPX-02 | Phase 2 | Pending |
-| PLPX-03 | Phase 2 | Pending |
-| PLPX-04 | Phase 2 | Pending |
+| PLPX-01 | Phase 2 | Complete |
+| PLPX-02 | Phase 2 | Complete |
+| PLPX-03 | Phase 2 | Complete |
+| PLPX-04 | Phase 2 | Complete |
 | PDPX-01 | Phase 3 | Pending |
 | PDPX-02 | Phase 3 | Pending |
 | PDPX-03 | Phase 3 | Pending |

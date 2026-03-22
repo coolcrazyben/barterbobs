@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 02-homepage-plp-01 — homepage sections approved and plan complete
-last_updated: "2026-03-22T21:57:55.429Z"
+stopped_at: "02-02-PLAN.md Task 3 checkpoint:human-verify — PLP grid, filters, Quick Add built, awaiting dev store verification"
+last_updated: "2026-03-22T22:02:28.627Z"
 last_activity: "2026-03-21 — Plan 01-01 complete: project scaffold and design token pipeline"
 progress:
   total_phases: 4
-  completed_phases: 1
+  completed_phases: 2
   total_plans: 5
-  completed_plans: 4
+  completed_plans: 5
   percent: 11
 ---
 
@@ -78,6 +78,9 @@ Recent decisions affecting current work:
 - [Phase 02-homepage-plp]: Staggered category grid via CSS :nth-child(even) { margin-top: 3rem } — pure CSS, no JS, removed at mobile
 - [Phase 02-homepage-plp]: Quick Add button uses data-product-id/data-variants-count attributes — section JS in Plan 02-02 handles click delegation
 - [Phase 02-homepage-plp]: Human verification approved: homepage sections match Figma, Theme Editor works, mobile responsive confirmed
+- [Phase 02-homepage-plp]: MainCollection JS defined inline in section script[type=module] — consistent with Phase 01-03 pattern
+- [Phase 02-homepage-plp]: Filter AJAX uses AbortController to cancel in-flight requests on rapid filter change — prevents race conditions
+- [Phase 02-homepage-plp]: filter-groups.liquid rendered in both desktop sidebar and mobile drawer (DRY pattern)
 
 ### Pending Todos
 
@@ -91,6 +94,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-22T21:57:52.066Z
-Stopped at: Completed 02-homepage-plp-01 — homepage sections approved and plan complete
+Last session: 2026-03-22T22:02:22.018Z
+Stopped at: 02-02-PLAN.md Task 3 checkpoint:human-verify — PLP grid, filters, Quick Add built, awaiting dev store verification
 Resume file: None
