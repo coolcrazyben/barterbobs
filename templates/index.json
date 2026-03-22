@@ -1,14 +1,37 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
       "type": "section-hero",
-      "settings": {}
+      "settings": {
+        "headline": "Artisan provisions, delivered with care.",
+        "subheadline": "Curated subscription boxes of premium pantry staples from independent makers.",
+        "cta_primary_label": "Start Your Box",
+        "cta_primary_url": "",
+        "cta_secondary_label": "Browse Products",
+        "cta_secondary_url": ""
+      }
     },
     "curation-pillars": {
       "type": "section-curation-pillars",
-      "settings": { "headline": "Curation with Care" },
       "blocks": {
-        "pillar-1": {
+        "pillar_Ctgn9W": {
+          "type": "pillar",
+          "settings": {
+            "icon": "",
+            "pillar_headline": "Thoughtfully Selected",
+            "pillar_body": "Every product is hand-picked by our team of food experts."
+          }
+        },
+        "pillar_TLhCV7": {
           "type": "pillar",
           "settings": {
             "icon": "favorite",
@@ -16,103 +39,94 @@
             "pillar_body": "Every product is hand-picked by our team of food experts."
           }
         },
-        "pillar-2": {
+        "pillar_MyqmHR": {
           "type": "pillar",
           "settings": {
-            "icon": "verified",
-            "pillar_headline": "Quality Guaranteed",
-            "pillar_body": "We stand behind every item we carry — no compromises."
-          }
-        },
-        "pillar-3": {
-          "type": "pillar",
-          "settings": {
-            "icon": "local_shipping",
-            "pillar_headline": "Delivered Fresh",
-            "pillar_body": "Carefully packed and shipped straight to your door."
+            "icon": "favorite",
+            "pillar_headline": "Thoughtfully Selected",
+            "pillar_body": "Every product is hand-picked by our team of food experts."
           }
         }
       },
-      "blocks_order": ["pillar-1", "pillar-2", "pillar-3"]
+      "block_order": [
+        "pillar_Ctgn9W",
+        "pillar_TLhCV7",
+        "pillar_MyqmHR"
+      ],
+      "settings": {
+        "headline": "Curation with Care"
+      }
     },
     "category-browse": {
       "type": "section-category-browse",
-      "settings": { "headline": "Browse Our Pantry" },
       "blocks": {
-        "card-1": { "type": "card", "settings": { "label": "Pantry Staples" } },
-        "card-2": { "type": "card", "settings": { "label": "Snacks & Treats" } },
-        "card-3": { "type": "card", "settings": { "label": "Condiments" } },
-        "card-4": { "type": "card", "settings": { "label": "Beverages" } }
+        "card_mrUzMT": {
+          "type": "card",
+          "settings": {
+            "label": "Pantry Staples",
+            "link": ""
+          }
+        },
+        "card_8ViCrN": {
+          "type": "card",
+          "settings": {
+            "label": "Pantry Staples",
+            "link": ""
+          }
+        },
+        "card_fpdhJM": {
+          "type": "card",
+          "settings": {
+            "label": "Pantry Staples",
+            "link": ""
+          }
+        }
       },
-      "blocks_order": ["card-1", "card-2", "card-3", "card-4"]
+      "block_order": [
+        "card_mrUzMT",
+        "card_8ViCrN",
+        "card_fpdhJM"
+      ],
+      "settings": {
+        "headline": "Browse Our Pantry"
+      }
     },
     "featured-products": {
       "type": "section-featured-products",
-      "settings": {}
+      "settings": {
+        "headline": "This Month's Favorites",
+        "subheadline": "Hand-picked by our curators",
+        "collection": ""
+      }
     },
     "brand-story": {
       "type": "section-brand-story",
-      "settings": {}
+      "settings": {
+        "headline": "The Story Behind the Box",
+        "body": "<p>We believe great food tells a story. Every product in your BarterBobs box is sourced directly from independent artisans who pour their craft into every batch.</p>",
+        "pull_quote": "Food is our love language."
+      }
     },
     "how-it-works": {
       "type": "section-how-it-works",
-      "settings": { "headline": "How It Works" },
-      "blocks": {
-        "step-1": {
-          "type": "step",
-          "settings": {
-            "step_number": "1",
-            "step_headline": "Choose Your Box",
-            "step_body": "Select the subscription plan that works for your household."
-          }
-        },
-        "step-2": {
-          "type": "step",
-          "settings": {
-            "step_number": "2",
-            "step_headline": "We Curate & Pack",
-            "step_body": "Our team hand-selects artisan products and packs your box with care."
-          }
-        },
-        "step-3": {
-          "type": "step",
-          "settings": {
-            "step_number": "3",
-            "step_headline": "Enjoy & Discover",
-            "step_body": "Receive your box, explore new flavors, and barter with friends."
-          }
-        }
-      },
-      "blocks_order": ["step-1", "step-2", "step-3"]
+      "settings": {
+        "headline": "How It Works"
+      }
     },
     "testimonials": {
       "type": "section-testimonials",
-      "settings": {},
-      "blocks": {
-        "quote-1": {
-          "type": "testimonial",
-          "settings": {
-            "quote": "The quality of every product is exceptional. My family looks forward to unboxing day every month!",
-            "customer_name": "Sarah M.",
-            "location": "Portland, OR",
-            "rating": 5
-          }
-        },
-        "quote-2": {
-          "type": "testimonial",
-          "settings": {
-            "quote": "BarterBobs introduced me to small-batch brands I never would have found on my own. Absolutely love it.",
-            "customer_name": "James T.",
-            "location": "Austin, TX",
-            "rating": 5
-          }
-        }
-      },
-      "blocks_order": ["quote-1", "quote-2"]
+      "settings": {
+        "headline": "Loved by Bob-scribers"
+      }
     },
     "cta-banner": {
       "type": "section-cta-banner",
-      "settings": {}
+      "settings": {
+        "headline": "Ready to elevate your pantry?",
+        "offer_copy": "Get $20 off your first two boxes",
+        "cta_label": "Claim Your Offer",
+        "cta_url": ""
+      }
     }
   },
   "order": [
