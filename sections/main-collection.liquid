@@ -1,0 +1,309 @@
+{%- comment -%}
+  sections/main-collection.liquid
+  Product Listing Page — responsive grid, filter sidebar, Quick Add with variant picker
+{%- endcomment -%}
+
+{{ 'component-collection.css' | asset_url | stylesheet_tag }}
+{{ 'component-product-card.css' | asset_url | stylesheet_tag }}
+
+{%- paginate collection.products by section.settings.products_per_page -%}
+
+<main-collection>
+  <div class="collection-layout">
+
+    <!-- Filter sidebar (desktop) -->
+    <aside class="filter-sidebar" aria-label="Product filters">
+      {% render 'filter-groups' %}
+    </aside>
+
+    <!-- Collection main area -->
+    <div class="collection-main">
+      <div class="collection-header">
+        <h1 class="collection-title">{{ collection.title }}</h1>
+        <p class="collection-count">{{ collection.products_count }} products</p>
+        <button class="filter-toggle-btn" aria-expanded="false" aria-controls="mobile-filter-drawer">
+          {% render 'icon-filter' %}
+          Filters
+        </button>
+      </div>
+
+      <ul class="collection-grid" id="collection-grid" role="list">
+        {%- for product in collection.products -%}
+          <li class="collection-grid__item">
+            {% render 'product-card', product: product %}
+          </li>
+        {%- else -%}
+          <li class="collection-grid__empty">No products found.</li>
+        {%- endfor -%}
+      </ul>
+
+      {%- if paginate.pages > 1 -%}
+        <nav class="collection-pagination" aria-label="Pagination">
+          {{ paginate | default_pagination }}
+        </nav>
+      {%- endif -%}
+    </div>
+
+  </div>
+
+  <!-- Mobile filter drawer (slide up from bottom) -->
+  <div class="mobile-filter-drawer" id="mobile-filter-drawer"
+       aria-hidden="true" aria-modal="true" role="dialog" aria-label="Product filters">
+    <div class="mobile-filter-drawer__header">
+      <span>Filters</span>
+      <button class="mobile-filter-drawer__close" aria-label="Close filters">
+        {% render 'icon-close' %}
+      </button>
+    </div>
+    <div class="mobile-filter-drawer__body">
+      {% render 'filter-groups' %}
+    </div>
+    <div class="mobile-filter-drawer__footer">
+      <button class="btn btn--primary mobile-filter-apply">Apply Filters</button>
+    </div>
+  </div>
+  <div class="filter-overlay" aria-hidden="true"></div>
+
+  <!-- Variant picker popover (hidden by default, positioned by JS) -->
+  <div class="variant-popover" id="variant-popover" aria-hidden="true"
+       role="dialog" aria-label="Select a variant">
+    <div class="variant-popover__chips" id="variant-popover-chips"></div>
+    <button class="variant-popover__add btn btn--primary" disabled>Add to Cart</button>
+  </div>
+
+</main-collection>
+
+{%- endpaginate -%}
+
+<script type="module">
+  class MainCollection extends window.BarterBobs.ShopifySection {
+    onSectionLoad() {
+      this._abortController = null;
+      this._selectedVariantId = null;
+
+      // Cache DOM refs
+      this.mobileDrawer = this.querySelector('.mobile-filter-drawer');
+      this.filterOverlay = this.querySelector('.filter-overlay');
+      this.filterToggleBtn = this.querySelector('.filter-toggle-btn');
+      this.grid = this.querySelector('.collection-grid');
+      this.popover = this.querySelector('.variant-popover');
+      this.popoverChips = this.querySelector('#variant-popover-chips');
+      this.popoverAddBtn = this.querySelector('.variant-popover__add');
+
+      // Mobile drawer
+      this.filterToggleBtn?.addEventListener('click', () => this.openMobileFilter());
+      this.querySelector('.mobile-filter-drawer__close')?.addEventListener('click', () => this.closeMobileFilter());
+      this.filterOverlay?.addEventListener('click', () => this.closeMobileFilter());
+      this.querySelector('.mobile-filter-apply')?.addEventListener('click', () => this.closeMobileFilter());
+      this._escHandler = (e) => { if (e.key === 'Escape') this.closeMobileFilter(); };
+      document.addEventListener('keydown', this._escHandler);
+
+      // Filters
+      this.querySelectorAll('.filter-checkbox').forEach(cb =>
+        cb.addEventListener('change', () => this.applyFilter()));
+      this.querySelectorAll('[data-price-slider]').forEach(s => this.initPriceSlider(s));
+
+      // Quick Add
+      this._bindQuickAddHandlers();
+      this.popoverAddBtn?.addEventListener('click', () => this.addToCart(this._selectedVariantId));
+      document.addEventListener('click', (e) => {
+        if (this.popover && !this.popover.contains(e.target) &&
+            !e.target.closest('.product-card__quick-add')) {
+          this.closePopover();
+        }
+      });
+    }
+
+    onSectionUnload() {
+      document.removeEventListener('keydown', this._escHandler);
+    }
+
+    _bindQuickAddHandlers() {
+      this.querySelectorAll('.product-card__quick-add').forEach(btn =>
+        btn.addEventListener('click', () => this.handleQuickAdd(btn)));
+    }
+
+    openMobileFilter() {
+      this.mobileDrawer.setAttribute('aria-hidden', 'false');
+      this.filterOverlay.classList.add('is-visible');
+      this.filterToggleBtn.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+      this.querySelector('.mobile-filter-drawer__close')?.focus();
+    }
+
+    closeMobileFilter() {
+      this.mobileDrawer.setAttribute('aria-hidden', 'true');
+      this.filterOverlay.classList.remove('is-visible');
+      this.filterToggleBtn.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+      this.filterToggleBtn.focus();
+    }
+
+    applyFilter() {
+      const url = new URL(window.location.href);
+      for (const key of [...url.searchParams.keys()]) {
+        if (key.startsWith('filter.')) url.searchParams.delete(key);
+      }
+      this.querySelectorAll('.filter-checkbox:checked').forEach(cb =>
+        url.searchParams.append(cb.name, cb.value));
+      window.history.replaceState({}, '', url.toString());
+      this.fetchFilteredGrid(url);
+    }
+
+    async fetchFilteredGrid(url) {
+      if (this._abortController) this._abortController.abort();
+      this._abortController = new AbortController();
+      this.grid?.setAttribute('aria-busy', 'true');
+      try {
+        const res = await fetch(
+          `${url.pathname}?${url.searchParams.toString()}&sections=main-collection`,
+          { signal: this._abortController.signal }
+        );
+        const data = await res.json();
+        const parsed = new DOMParser().parseFromString(data['main-collection'], 'text/html');
+        const newGrid = parsed.querySelector('.collection-grid');
+        if (this.grid && newGrid) {
+          this.grid.innerHTML = newGrid.innerHTML;
+          this._bindQuickAddHandlers();
+        }
+      } catch (err) {
+        if (err.name !== 'AbortError') console.error('[MainCollection] Filter fetch failed:', err);
+      } finally {
+        this.grid?.removeAttribute('aria-busy');
+        this._abortController = null;
+      }
+    }
+
+    initPriceSlider(container) {
+      const minThumb = container.querySelector('[data-thumb="min"]');
+      const maxThumb = container.querySelector('[data-thumb="max"]');
+      const fill = container.querySelector('[data-slider-fill]');
+      const rangeMin = parseFloat(container.dataset.min);
+      const rangeMax = parseFloat(container.dataset.max);
+      const updateFill = () => {
+        const lo = ((parseFloat(minThumb.value) - rangeMin) / (rangeMax - rangeMin)) * 100;
+        const hi = ((parseFloat(maxThumb.value) - rangeMin) / (rangeMax - rangeMin)) * 100;
+        fill.style.left = `${lo}%`;
+        fill.style.width = `${hi - lo}%`;
+      };
+      minThumb.addEventListener('input', () => {
+        if (parseFloat(minThumb.value) > parseFloat(maxThumb.value)) minThumb.value = maxThumb.value;
+        updateFill();
+      });
+      maxThumb.addEventListener('input', () => {
+        if (parseFloat(maxThumb.value) < parseFloat(minThumb.value)) maxThumb.value = minThumb.value;
+        updateFill();
+      });
+      let debounce;
+      [minThumb, maxThumb].forEach(t => t.addEventListener('change', () => {
+        clearTimeout(debounce);
+        debounce = setTimeout(() => {
+          const url = new URL(window.location.href);
+          url.searchParams.set(minThumb.name, minThumb.value);
+          url.searchParams.set(maxThumb.name, maxThumb.value);
+          window.history.replaceState({}, '', url.toString());
+          this.fetchFilteredGrid(url);
+        }, 300);
+      }));
+      updateFill();
+    }
+
+    async handleQuickAdd(btn) {
+      const productId = btn.dataset.productId;
+      const variantsCount = parseInt(btn.dataset.variantsCount, 10);
+      if (variantsCount === 1) {
+        btn.disabled = true;
+        const prev = btn.textContent;
+        btn.textContent = '...';
+        try {
+          const res = await fetch(`/products/${productId}.js`);
+          const product = await res.json();
+          await this.addToCart(product.variants[0].id);
+        } finally {
+          btn.disabled = false;
+          btn.textContent = prev;
+        }
+      } else {
+        await this.openVariantPopover(btn, productId);
+      }
+    }
+
+    async openVariantPopover(triggerBtn, productId) {
+      this._selectedVariantId = null;
+      this.popoverAddBtn.disabled = true;
+      const res = await fetch(`/products/${productId}.js`);
+      const product = await res.json();
+      this.popoverChips.innerHTML = product.variants
+        .map(v => `<button class="variant-chip" data-variant-id="${v.id}"
+          ${!v.available ? 'disabled' : ''}
+          aria-label="${v.title}${!v.available ? ' (unavailable)' : ''}">
+          ${v.title}</button>`).join('');
+      this.popoverChips.querySelectorAll('.variant-chip:not([disabled])').forEach(chip => {
+        chip.addEventListener('click', () => {
+          this.popoverChips.querySelectorAll('.variant-chip').forEach(c => c.classList.remove('is-selected'));
+          chip.classList.add('is-selected');
+          this._selectedVariantId = chip.dataset.variantId;
+          this.popoverAddBtn.disabled = false;
+        });
+      });
+      const rect = triggerBtn.getBoundingClientRect();
+      const spaceBelow = window.innerHeight - rect.bottom;
+      this.popover.style.left = `${Math.max(8, rect.left)}px`;
+      this.popover.style.width = `${Math.min(260, window.innerWidth - 16)}px`;
+      if (spaceBelow < 180) {
+        this.popover.style.top = '';
+        this.popover.style.bottom = `${window.innerHeight - rect.top + 8}px`;
+      } else {
+        this.popover.style.bottom = '';
+        this.popover.style.top = `${rect.bottom + 8}px`;
+      }
+      this.popover.setAttribute('aria-hidden', 'false');
+      this.popoverChips.querySelector('.variant-chip:not([disabled])')?.focus();
+    }
+
+    closePopover() {
+      this.popover?.setAttribute('aria-hidden', 'true');
+      this._selectedVariantId = null;
+    }
+
+    async addToCart(variantId) {
+      if (!variantId) return;
+      try {
+        const addRes = await fetch('/cart/add.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id: variantId, quantity: 1 }),
+        });
+        if (!addRes.ok) throw new Error(`Cart add ${addRes.status}`);
+        const cart = await fetch('/cart.js').then(r => r.json());
+        window.BarterBobs.publish('cart:updated', { itemCount: cart.item_count });
+        window.BarterBobs.publish('cart:open', {});
+        this.closePopover();
+      } catch (err) {
+        console.error('[MainCollection] Quick Add failed:', err);
+      }
+    }
+  }
+
+  customElements.define('main-collection', MainCollection);
+</script>
+
+{% schema %}
+{
+  "name": "Collection",
+  "tag": "section",
+  "class": "main-collection-wrapper",
+  "enabled_on": { "templates": ["collection"] },
+  "settings": [
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "label": "Products per page",
+      "min": 8,
+      "max": 48,
+      "step": 4,
+      "default": 12
+    }
+  ]
+}
+{% endschema %}
