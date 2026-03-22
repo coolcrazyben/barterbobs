@@ -6,22 +6,43 @@
     },
     "curation-pillars": {
       "type": "section-curation-pillars",
-      "settings": {},
+      "settings": { "headline": "Curation with Care" },
       "blocks": {
-        "pillar-1": { "type": "pillar", "settings": {} },
-        "pillar-2": { "type": "pillar", "settings": {} },
-        "pillar-3": { "type": "pillar", "settings": {} }
+        "pillar-1": {
+          "type": "pillar",
+          "settings": {
+            "icon": "favorite",
+            "pillar_headline": "Thoughtfully Selected",
+            "pillar_body": "Every product is hand-picked by our team of food experts."
+          }
+        },
+        "pillar-2": {
+          "type": "pillar",
+          "settings": {
+            "icon": "verified",
+            "pillar_headline": "Quality Guaranteed",
+            "pillar_body": "We stand behind every item we carry — no compromises."
+          }
+        },
+        "pillar-3": {
+          "type": "pillar",
+          "settings": {
+            "icon": "local_shipping",
+            "pillar_headline": "Delivered Fresh",
+            "pillar_body": "Carefully packed and shipped straight to your door."
+          }
+        }
       },
       "blocks_order": ["pillar-1", "pillar-2", "pillar-3"]
     },
     "category-browse": {
       "type": "section-category-browse",
-      "settings": {},
+      "settings": { "headline": "Browse Our Pantry" },
       "blocks": {
-        "card-1": { "type": "card", "settings": {} },
-        "card-2": { "type": "card", "settings": {} },
-        "card-3": { "type": "card", "settings": {} },
-        "card-4": { "type": "card", "settings": {} }
+        "card-1": { "type": "card", "settings": { "label": "Pantry Staples" } },
+        "card-2": { "type": "card", "settings": { "label": "Snacks & Treats" } },
+        "card-3": { "type": "card", "settings": { "label": "Condiments" } },
+        "card-4": { "type": "card", "settings": { "label": "Beverages" } }
       },
       "blocks_order": ["card-1", "card-2", "card-3", "card-4"]
     },
@@ -35,11 +56,32 @@
     },
     "how-it-works": {
       "type": "section-how-it-works",
-      "settings": {},
+      "settings": { "headline": "How It Works" },
       "blocks": {
-        "step-1": { "type": "step", "settings": {} },
-        "step-2": { "type": "step", "settings": {} },
-        "step-3": { "type": "step", "settings": {} }
+        "step-1": {
+          "type": "step",
+          "settings": {
+            "step_number": "1",
+            "step_headline": "Choose Your Box",
+            "step_body": "Select the subscription plan that works for your household."
+          }
+        },
+        "step-2": {
+          "type": "step",
+          "settings": {
+            "step_number": "2",
+            "step_headline": "We Curate & Pack",
+            "step_body": "Our team hand-selects artisan products and packs your box with care."
+          }
+        },
+        "step-3": {
+          "type": "step",
+          "settings": {
+            "step_number": "3",
+            "step_headline": "Enjoy & Discover",
+            "step_body": "Receive your box, explore new flavors, and barter with friends."
+          }
+        }
       },
       "blocks_order": ["step-1", "step-2", "step-3"]
     },
@@ -47,8 +89,24 @@
       "type": "section-testimonials",
       "settings": {},
       "blocks": {
-        "quote-1": { "type": "testimonial", "settings": {} },
-        "quote-2": { "type": "testimonial", "settings": {} }
+        "quote-1": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "The quality of every product is exceptional. My family looks forward to unboxing day every month!",
+            "customer_name": "Sarah M.",
+            "location": "Portland, OR",
+            "rating": 5
+          }
+        },
+        "quote-2": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "BarterBobs introduced me to small-batch brands I never would have found on my own. Absolutely love it.",
+            "customer_name": "James T.",
+            "location": "Austin, TX",
+            "rating": 5
+          }
+        }
       },
       "blocks_order": ["quote-1", "quote-2"]
     },
