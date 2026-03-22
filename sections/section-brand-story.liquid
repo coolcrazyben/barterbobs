@@ -1,0 +1,63 @@
+{%- comment -%}
+  sections/section-brand-story.liquid
+  Brand Story section — 2-col editorial with headline, body, pull quote, 2x2 image grid
+{%- endcomment -%}
+
+{{ 'component-brand-story.css' | asset_url | stylesheet_tag }}
+
+<section class="section-brand-story" data-section-id="{{ section.id }}">
+  <!-- Implementation in Task 2 -->
+</section>
+
+{% schema %}
+{
+  "name": "Brand Story",
+  "tag": "section",
+  "class": "section-brand-story-wrapper",
+  "settings": [
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "The Story Behind the Box"
+    },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Body text",
+      "default": "<p>We believe great food tells a story. Every product in your BarterBobs box is sourced directly from independent artisans who pour their craft into every batch.</p>"
+    },
+    {
+      "type": "text",
+      "id": "pull_quote",
+      "label": "Pull quote",
+      "default": "Food is our love language."
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Image 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Image 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_3",
+      "label": "Image 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_4",
+      "label": "Image 4"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Brand Story"
+    }
+  ]
+}
+{% endschema %}

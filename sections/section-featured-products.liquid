@@ -1,0 +1,42 @@
+{%- comment -%}
+  sections/section-featured-products.liquid
+  Featured Products section — 4-column product grid from merchant-selected collection
+{%- endcomment -%}
+
+{{ 'component-featured-products.css' | asset_url | stylesheet_tag }}
+
+<section class="section-featured-products" data-section-id="{{ section.id }}">
+  <!-- Implementation in Task 2 -->
+</section>
+
+{% schema %}
+{
+  "name": "Featured Products",
+  "tag": "section",
+  "class": "section-featured-products-wrapper",
+  "settings": [
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Section headline",
+      "default": "This Month's Favorites"
+    },
+    {
+      "type": "text",
+      "id": "subheadline",
+      "label": "Subheadline",
+      "default": "Hand-picked by our curators"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Featured collection"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Products"
+    }
+  ]
+}
+{% endschema %}

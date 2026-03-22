@@ -1,0 +1,48 @@
+{%- comment -%}
+  sections/section-cta-banner.liquid
+  CTA Banner section — full-width rounded red card with headline and CTA button
+{%- endcomment -%}
+
+{{ 'component-cta-banner.css' | asset_url | stylesheet_tag }}
+
+<section class="section-cta-banner" data-section-id="{{ section.id }}">
+  <!-- Implementation in Task 2 -->
+</section>
+
+{% schema %}
+{
+  "name": "CTA Banner",
+  "tag": "section",
+  "class": "section-cta-banner-wrapper",
+  "settings": [
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Ready to elevate your pantry?"
+    },
+    {
+      "type": "text",
+      "id": "offer_copy",
+      "label": "Offer copy",
+      "default": "Get $20 off your first two boxes"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "CTA button label",
+      "default": "Claim Your Offer"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA button URL"
+    }
+  ],
+  "presets": [
+    {
+      "name": "CTA Banner"
+    }
+  ]
+}
+{% endschema %}

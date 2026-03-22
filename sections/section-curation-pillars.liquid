@@ -1,0 +1,58 @@
+{%- comment -%}
+  sections/section-curation-pillars.liquid
+  Curation Pillars section — 3 icon+headline+body repeatable blocks
+{%- endcomment -%}
+
+{{ 'component-curation-pillars.css' | asset_url | stylesheet_tag }}
+
+<section class="section-curation-pillars" data-section-id="{{ section.id }}">
+  <!-- Implementation in Task 2 -->
+</section>
+
+{% schema %}
+{
+  "name": "Curation Pillars",
+  "tag": "section",
+  "class": "section-curation-pillars-wrapper",
+  "max_blocks": 3,
+  "settings": [
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Section headline",
+      "default": "Curation with Care"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "pillar",
+      "name": "Pillar",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icon (Material Symbol name)",
+          "default": "favorite"
+        },
+        {
+          "type": "text",
+          "id": "pillar_headline",
+          "label": "Headline",
+          "default": "Thoughtfully Selected"
+        },
+        {
+          "type": "textarea",
+          "id": "pillar_body",
+          "label": "Body text",
+          "default": "Every product is hand-picked by our team of food experts."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Curation Pillars"
+    }
+  ]
+}
+{% endschema %}

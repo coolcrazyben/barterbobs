@@ -23,5 +23,9 @@
   },
   "accessibility": {
     "close": "Close"
+  },
+  "products": {
+    "quick_add": "Quick add {{ title }}",
+    "quick_add_label": "Quick Add"
   }
 }

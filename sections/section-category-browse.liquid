@@ -1,0 +1,56 @@
+{%- comment -%}
+  sections/section-category-browse.liquid
+  Category Browse section — staggered 4-card portrait grid, repeatable blocks
+{%- endcomment -%}
+
+{{ 'component-category-browse.css' | asset_url | stylesheet_tag }}
+
+<section class="section-category-browse" data-section-id="{{ section.id }}">
+  <!-- Implementation in Task 2 -->
+</section>
+
+{% schema %}
+{
+  "name": "Category Browse",
+  "tag": "section",
+  "class": "section-category-browse-wrapper",
+  "max_blocks": 4,
+  "settings": [
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Section headline",
+      "default": "Browse Our Pantry"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Category Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Card image"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Card label",
+          "default": "Pantry Staples"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Card link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Category Browse"
+    }
+  ]
+}
+{% endschema %}

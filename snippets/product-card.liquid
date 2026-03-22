@@ -1,0 +1,38 @@
+{%- comment -%}
+  snippets/product-card.liquid
+  Shared product card — used by section-featured-products and main-collection
+  Required parameters: product (product object)
+{%- endcomment -%}
+
+<article class="product-card">
+  {%- assign product_image_alt = product.featured_image.alt | escape -%}
+  <a href="{{ product.url }}" class="product-card__image-link" tabindex="-1" aria-hidden="true">
+    <div class="product-card__image-wrapper">
+      {%- if product.featured_image -%}
+        {{ product.featured_image | image_url: width: 600 | image_tag: class: 'product-card__image', alt: product_image_alt, loading: 'lazy', width: 600, height: 600 }}
+      {%- else -%}
+        {{ 'product-1' | placeholder_svg_tag: 'product-card__image product-card__image--placeholder' }}
+      {%- endif -%}
+    </div>
+  </a>
+
+  {%- if product.type != blank -%}
+    <span class="product-card__badge">{{ product.type }}</span>
+  {%- endif -%}
+
+  <div class="product-card__info">
+    <h3 class="product-card__title">
+      <a href="{{ product.url }}">{{ product.title }}</a>
+    </h3>
+    <p class="product-card__price">{{ product.price | money }}</p>
+  </div>
+
+  <button
+    class="product-card__quick-add"
+    data-product-id="{{ product.id }}"
+    data-variants-count="{{ product.variants | size }}"
+    aria-label="{{ 'products.quick_add' | t: title: product.title | escape }}"
+  >
+    {{- 'products.quick_add_label' | t | default: 'Quick Add' -}}
+  </button>
+</article>

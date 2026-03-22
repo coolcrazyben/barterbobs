@@ -1,0 +1,58 @@
+{%- comment -%}
+  sections/section-how-it-works.liquid
+  How It Works section — 3-step flow with numbered gradient circles
+{%- endcomment -%}
+
+{{ 'component-how-it-works.css' | asset_url | stylesheet_tag }}
+
+<section class="section-how-it-works" data-section-id="{{ section.id }}">
+  <!-- Implementation in Task 2 -->
+</section>
+
+{% schema %}
+{
+  "name": "How It Works",
+  "tag": "section",
+  "class": "section-how-it-works-wrapper",
+  "max_blocks": 3,
+  "settings": [
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Section headline",
+      "default": "How It Works"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        {
+          "type": "text",
+          "id": "step_number",
+          "label": "Step number",
+          "default": "1"
+        },
+        {
+          "type": "text",
+          "id": "step_headline",
+          "label": "Step headline",
+          "default": "Choose Your Box"
+        },
+        {
+          "type": "textarea",
+          "id": "step_body",
+          "label": "Step description",
+          "default": "Select the subscription plan that works for your household."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "How It Works"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,59 @@
+{%- comment -%}
+  sections/section-hero.liquid
+  Hero section — display headline, subheadline, CTA buttons, hero image
+{%- endcomment -%}
+
+{{ 'component-hero.css' | asset_url | stylesheet_tag }}
+
+<section class="section-hero" data-section-id="{{ section.id }}">
+  <!-- Implementation in Task 2 -->
+</section>
+
+{% schema %}
+{
+  "name": "Hero",
+  "tag": "section",
+  "class": "section-hero-wrapper",
+  "settings": [
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Artisan provisions, delivered with care."
+    },
+    {
+      "type": "textarea",
+      "id": "subheadline",
+      "label": "Subheadline",
+      "default": "Curated subscription boxes of premium pantry staples from independent makers."
+    },
+    {
+      "type": "text",
+      "id": "cta_primary_label",
+      "label": "Primary CTA label",
+      "default": "Start Your Box"
+    },
+    {
+      "type": "url",
+      "id": "cta_primary_url",
+      "label": "Primary CTA URL"
+    },
+    {
+      "type": "text",
+      "id": "cta_secondary_label",
+      "label": "Secondary CTA label",
+      "default": "Browse Products"
+    },
+    {
+      "type": "url",
+      "id": "cta_secondary_url",
+      "label": "Secondary CTA URL"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero image"
+    }
+  ]
+}
+{% endschema %}

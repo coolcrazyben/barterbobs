@@ -1,0 +1,72 @@
+{%- comment -%}
+  sections/section-testimonials.liquid
+  Testimonials section — star-rated quote cards with customer name and location
+{%- endcomment -%}
+
+{{ 'component-testimonials.css' | asset_url | stylesheet_tag }}
+
+<section class="section-testimonials" data-section-id="{{ section.id }}">
+  <!-- Implementation in Task 2 -->
+</section>
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "tag": "section",
+  "class": "section-testimonials-wrapper",
+  "max_blocks": 12,
+  "settings": [
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Section headline",
+      "default": "Loved by Bob-scribers"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote",
+          "default": "The quality of every product is exceptional. My family looks forward to unboxing day every month!"
+        },
+        {
+          "type": "text",
+          "id": "customer_name",
+          "label": "Customer name",
+          "default": "Sarah M."
+        },
+        {
+          "type": "text",
+          "id": "location",
+          "label": "Location",
+          "default": "Portland, OR"
+        },
+        {
+          "type": "range",
+          "id": "rating",
+          "label": "Star rating",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "default": 5
+        },
+        {
+          "type": "image_picker",
+          "id": "avatar",
+          "label": "Customer avatar"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonials"
+    }
+  ]
+}
+{% endschema %}
