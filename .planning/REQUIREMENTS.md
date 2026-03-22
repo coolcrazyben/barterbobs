@@ -23,11 +23,11 @@
 
 ### Homepage
 
-- [ ] **HOME-01**: Hero section displays large display headline (Newsreader serif), supporting subheadline (Inter), one or two CTA buttons, and a hero product/lifestyle image — all fields configurable in Theme Editor
-- [ ] **HOME-02**: Hero section image uses `loading="eager"` (not lazy) when the section is in the first two positions on the page to avoid LCP penalty
-- [ ] **HOME-03**: Featured products / bento grid section renders a curated product grid with mixed card sizes, sourcing products from a merchant-selected collection
-- [ ] **HOME-04**: "How It Works" section renders a 3-step flow with numbered circles, icons (Material Symbols), and step descriptions — all configurable in Theme Editor
-- [ ] **HOME-05**: Testimonials section renders quote cards with customer name, quote text, star rating, and optional avatar image — supports multiple testimonial blocks via Theme Editor
+- [x] **HOME-01**: Hero section displays large display headline (Newsreader serif), supporting subheadline (Inter), one or two CTA buttons, and a hero product/lifestyle image — all fields configurable in Theme Editor
+- [x] **HOME-02**: Hero section image uses `loading="eager"` (not lazy) when the section is in the first two positions on the page to avoid LCP penalty
+- [x] **HOME-03**: Featured products / bento grid section renders a curated product grid with mixed card sizes, sourcing products from a merchant-selected collection
+- [x] **HOME-04**: "How It Works" section renders a 3-step flow with numbered circles, icons (Material Symbols), and step descriptions — all configurable in Theme Editor
+- [x] **HOME-05**: Testimonials section renders quote cards with customer name, quote text, star rating, and optional avatar image — supports multiple testimonial blocks via Theme Editor
 
 ### Product Listing Page
 
@@ -109,11 +109,11 @@
 | NAVX-02 | Phase 1 | Complete |
 | NAVX-03 | Phase 1 | Complete |
 | NAVX-04 | Phase 1 | Complete |
-| HOME-01 | Phase 2 | Pending |
-| HOME-02 | Phase 2 | Pending |
-| HOME-03 | Phase 2 | Pending |
-| HOME-04 | Phase 2 | Pending |
-| HOME-05 | Phase 2 | Pending |
+| HOME-01 | Phase 2 | Complete |
+| HOME-02 | Phase 2 | Complete |
+| HOME-03 | Phase 2 | Complete |
+| HOME-04 | Phase 2 | Complete |
+| HOME-05 | Phase 2 | Complete |
 | PLPX-01 | Phase 2 | Pending |
 | PLPX-02 | Phase 2 | Pending |
 | PLPX-03 | Phase 2 | Pending |

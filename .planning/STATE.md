@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Phase 2 context gathered
-last_updated: "2026-03-22T21:08:49.562Z"
+stopped_at: "Checkpoint: Task 3 awaiting human verification — homepage sections vs Figma + Theme Editor"
+last_updated: "2026-03-22T21:45:08.363Z"
 last_activity: "2026-03-21 — Plan 01-01 complete: project scaffold and design token pipeline"
 progress:
   total_phases: 4
   completed_phases: 1
-  total_plans: 3
-  completed_plans: 3
+  total_plans: 5
+  completed_plans: 4
   percent: 11
 ---
 
@@ -52,6 +52,7 @@ Progress: [█░░░░░░░░░] 11%
 *Updated after each plan completion*
 | Phase 01-foundation P02 | 3 | 2 tasks | 2 files |
 | Phase 01-foundation P03 | 5 | 2 tasks | 12 files |
+| Phase 02-homepage-plp P01 | 6 | 2 tasks | 20 files |
 
 ## Accumulated Context
 
@@ -73,6 +74,9 @@ Recent decisions affecting current work:
 - [Phase 01-03]: Section-specific JS defined inline in section's <script type=module> tag — not a separate asset file; keeps behavior co-located and avoids dynamic imports between module scope boundaries
 - [Phase 01-03]: Disable RemoteAsset/AssetPreload theme check warnings in .theme-check.yml — Google Fonts preconnect/preload is intentional architecture from 01-02; non-actionable without switching font providers
 - [Phase 01-03]: NavDrawer extends window.BarterBobs.ShopifySection for shopify:section:load/unload Theme Editor lifecycle; drawer:close event introduced for Phase 3 cart drawer coordination
+- [Phase 02-homepage-plp]: image_tag multi-line named params do not support | escape inline — assign alt to variable first
+- [Phase 02-homepage-plp]: Staggered category grid via CSS :nth-child(even) { margin-top: 3rem } — pure CSS, no JS, removed at mobile
+- [Phase 02-homepage-plp]: Quick Add button uses data-product-id/data-variants-count attributes — section JS in Plan 02-02 handles click delegation
 
 ### Pending Todos
 
@@ -86,6 +90,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-22T21:08:49.557Z
-Stopped at: Phase 2 context gathered
-Resume file: .planning/phases/02-homepage-plp/02-CONTEXT.md
+Last session: 2026-03-22T21:45:08.357Z
+Stopped at: Checkpoint: Task 3 awaiting human verification — homepage sections vs Figma + Theme Editor
+Resume file: None
