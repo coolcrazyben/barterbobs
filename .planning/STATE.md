@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 01-foundation/01-02-PLAN.md
-last_updated: "2026-03-21T03:19:29.939Z"
+stopped_at: "Completed 01-foundation/01-03-PLAN.md (checkpoint:human-verify pending)"
+last_updated: "2026-03-22T20:37:06.209Z"
 last_activity: "2026-03-21 — Plan 01-01 complete: project scaffold and design token pipeline"
 progress:
   total_phases: 4
-  completed_phases: 0
+  completed_phases: 1
   total_plans: 3
-  completed_plans: 2
+  completed_plans: 3
   percent: 11
 ---
 
@@ -51,6 +51,7 @@ Progress: [█░░░░░░░░░] 11%
 
 *Updated after each plan completion*
 | Phase 01-foundation P02 | 3 | 2 tasks | 2 files |
+| Phase 01-foundation P03 | 5 | 2 tasks | 12 files |
 
 ## Accumulated Context
 
@@ -69,6 +70,9 @@ Recent decisions affecting current work:
 - [Phase 01-02]: Use <script type=module> for global.js — Liquid script_tag filter does not emit type=module, breaking ES module semantics
 - [Phase 01-02]: Newsreader uses preload+print/onload swap pattern to avoid LCP regression while preventing render-blocking
 - [Phase 01-02]: Section groups use plural {% sections %} tag — singular {% section %} does not support Theme Editor block management
+- [Phase 01-03]: Section-specific JS defined inline in section's <script type=module> tag — not a separate asset file; keeps behavior co-located and avoids dynamic imports between module scope boundaries
+- [Phase 01-03]: Disable RemoteAsset/AssetPreload theme check warnings in .theme-check.yml — Google Fonts preconnect/preload is intentional architecture from 01-02; non-actionable without switching font providers
+- [Phase 01-03]: NavDrawer extends window.BarterBobs.ShopifySection for shopify:section:load/unload Theme Editor lifecycle; drawer:close event introduced for Phase 3 cart drawer coordination
 
 ### Pending Todos
 
@@ -82,6 +86,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-21T03:19:29.934Z
-Stopped at: Completed 01-foundation/01-02-PLAN.md
+Last session: 2026-03-22T20:37:06.204Z
+Stopped at: Completed 01-foundation/01-03-PLAN.md (checkpoint:human-verify pending)
 Resume file: None

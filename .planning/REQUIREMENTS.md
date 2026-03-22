@@ -16,10 +16,10 @@
 
 ### Navigation
 
-- [ ] **NAVX-01**: Header renders as a section group with glassmorphism effect (semi-transparent surface, 12px backdrop blur) and sticks to the top of the viewport on scroll
-- [ ] **NAVX-02**: Header includes cart icon with dynamic item count badge that updates without page reload when items are added
-- [ ] **NAVX-03**: Mobile navigation collapses to a hamburger icon that opens a full-height off-canvas drawer with menu links
-- [ ] **NAVX-04**: Footer renders as a section group with navigation links, brand identity, and merchant-configurable content blocks
+- [x] **NAVX-01**: Header renders as a section group with glassmorphism effect (semi-transparent surface, 12px backdrop blur) and sticks to the top of the viewport on scroll
+- [x] **NAVX-02**: Header includes cart icon with dynamic item count badge that updates without page reload when items are added
+- [x] **NAVX-03**: Mobile navigation collapses to a hamburger icon that opens a full-height off-canvas drawer with menu links
+- [x] **NAVX-04**: Footer renders as a section group with navigation links, brand identity, and merchant-configurable content blocks
 
 ### Homepage
 
@@ -105,10 +105,10 @@
 | FNDX-04 | Phase 1 | Complete |
 | FNDX-05 | Phase 1 | Complete |
 | FNDX-06 | Phase 1 | Complete |
-| NAVX-01 | Phase 1 | Pending |
-| NAVX-02 | Phase 1 | Pending |
-| NAVX-03 | Phase 1 | Pending |
-| NAVX-04 | Phase 1 | Pending |
+| NAVX-01 | Phase 1 | Complete |
+| NAVX-02 | Phase 1 | Complete |
+| NAVX-03 | Phase 1 | Complete |
+| NAVX-04 | Phase 1 | Complete |
 | HOME-01 | Phase 2 | Pending |
 | HOME-02 | Phase 2 | Pending |
 | HOME-03 | Phase 2 | Pending |

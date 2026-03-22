@@ -12,7 +12,7 @@ Build a production-ready custom Shopify OS 2.0 theme from Figma design exports i
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Foundation** - Shopify OS 2.0 scaffold, design tokens, global JS, and navigation shell
+- [x] **Phase 1: Foundation** - Shopify OS 2.0 scaffold, design tokens, global JS, and navigation shell (completed 2026-03-22)
 - [ ] **Phase 2: Homepage + PLP** - Editorial homepage sections and browsable product listing page
 - [ ] **Phase 3: PDP + Cart** - Subscription frequency selector, variant picker, and AJAX cart drawer
 - [ ] **Phase 4: Static Pages + Polish** - Remaining templates, accessibility, and theme check clean pass
@@ -90,7 +90,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 2/3 | In Progress|  |
+| 1. Foundation | 3/3 | Complete   | 2026-03-22 |
 | 2. Homepage + PLP | 0/2 | Not started | - |
 | 3. PDP + Cart | 0/3 | Not started | - |
 | 4. Static Pages + Polish | 0/1 | Not started | - |
