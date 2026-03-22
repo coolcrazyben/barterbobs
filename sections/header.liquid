@@ -1,0 +1,185 @@
+{%- comment -%}
+  sections/header.liquid
+  Glassmorphism sticky header with cart badge and mobile off-canvas nav drawer
+  Loaded via sections/header-group.json as OS 2.0 section group
+{%- endcomment -%}
+
+{{ 'component-header.css' | asset_url | stylesheet_tag }}
+
+{%- assign nav_menu = section.settings.menu | default: 'main-menu' -%}
+
+<!-- Nav drawer overlay (behind drawer, in front of page) -->
+<div class="nav-overlay" data-nav-overlay aria-hidden="true"></div>
+
+<nav-drawer>
+  <header class="site-header" role="banner">
+    <div class="site-header__inner">
+
+      <!-- Logo / brand wordmark -->
+      <a href="{{ routes.root_url }}" class="site-header__logo" aria-label="{{ shop.name }} home">
+        {{ shop.name }}
+      </a>
+
+      <!-- Desktop navigation -->
+      <ul class="site-header__nav" role="list" aria-label="{{ 'header.open_navigation' | t }}">
+        {%- for link in linklists[nav_menu].links -%}
+          <li>
+            <a href="{{ link.url }}"
+              {%- if link.active %} aria-current="page"{% endif -%}>
+              {{ link.title }}
+            </a>
+          </li>
+        {%- endfor -%}
+      </ul>
+
+      <!-- Header actions: hamburger (mobile) + cart -->
+      <div class="site-header__actions">
+
+        <!-- Hamburger button (mobile only — shown via CSS) -->
+        <button
+          class="hamburger-button"
+          data-hamburger
+          aria-expanded="false"
+          aria-controls="NavDrawer"
+          aria-label="{{ 'header.open_navigation' | t }}">
+          {%- render 'icon-hamburger' -%}
+        </button>
+
+        <!-- Cart icon with count badge (managed by CartCountBubble web component) -->
+        {%- if section.settings.show_cart -%}
+          <cart-count-bubble>
+            <button
+              class="cart-icon-button"
+              aria-label="{{ 'cart.title' | t }}"
+              data-cart-toggle>
+              {%- render 'icon-cart' -%}
+              <span class="cart-count-badge" data-cart-count hidden>0</span>
+            </button>
+          </cart-count-bubble>
+        {%- endif -%}
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile off-canvas nav drawer — slides from LEFT -->
+  <div
+    id="NavDrawer"
+    class="nav-drawer"
+    role="dialog"
+    aria-modal="true"
+    aria-label="{{ 'header.open_navigation' | t }}"
+    aria-hidden="true"
+    data-nav-drawer>
+
+    <div class="nav-drawer__header">
+      <span class="site-header__logo">{{ shop.name }}</span>
+      <button
+        class="nav-drawer__close"
+        data-close-nav
+        aria-label="{{ 'accessibility.close' | t }}">
+        {%- render 'icon-close' -%}
+      </button>
+    </div>
+
+    <ul class="nav-drawer__nav" role="list">
+      {%- for link in linklists[nav_menu].links -%}
+        <li>
+          <a href="{{ link.url }}"
+            {%- if link.active %} aria-current="page"{% endif -%}>
+            {{ link.title }}
+          </a>
+        </li>
+      {%- endfor -%}
+    </ul>
+
+  </div>
+</nav-drawer>
+
+<script type="module">
+  // NavDrawer web component — extends ShopifySection base class from global.js
+  // Handles hamburger toggle, overlay backdrop, Escape key, and drawer open/close
+
+  class NavDrawer extends window.BarterBobs.ShopifySection {
+    onSectionLoad() {
+      this.hamburgerBtn = this.querySelector('[data-hamburger]');
+      this.drawer = this.querySelector('[data-nav-drawer]');
+      this.overlay = document.querySelector('[data-nav-overlay]');
+      this.closeBtn = this.querySelector('[data-close-nav]');
+      this._trapFocusCleanup = null;
+      this._lastFocusedEl = null;
+
+      this.hamburgerBtn?.addEventListener('click', this.open.bind(this));
+      this.closeBtn?.addEventListener('click', this.close.bind(this));
+      this.overlay?.addEventListener('click', this.close.bind(this));
+      this._keydownHandler = this._handleKeydown.bind(this);
+      document.addEventListener('keydown', this._keydownHandler);
+    }
+
+    onSectionUnload() {
+      document.removeEventListener('keydown', this._keydownHandler);
+      if (this._trapFocusCleanup) this._trapFocusCleanup();
+    }
+
+    open() {
+      if (!this.drawer) return;
+      this._lastFocusedEl = document.activeElement;
+      this.drawer.setAttribute('aria-hidden', 'false');
+      this.hamburgerBtn?.setAttribute('aria-expanded', 'true');
+      this.overlay?.classList.add('is-visible');
+      this.overlay?.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('nav-open');
+      // Trap focus inside drawer — use trapFocus from global.js
+      this._trapFocusCleanup = window.BarterBobs.trapFocus(this.drawer, this.closeBtn);
+    }
+
+    close() {
+      if (!this.drawer) return;
+      this.drawer.setAttribute('aria-hidden', 'true');
+      this.hamburgerBtn?.setAttribute('aria-expanded', 'false');
+      this.overlay?.classList.remove('is-visible');
+      this.overlay?.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('nav-open');
+      // Release focus trap
+      if (this._trapFocusCleanup) {
+        this._trapFocusCleanup();
+        this._trapFocusCleanup = null;
+      }
+      // Return focus to element that triggered the drawer
+      this._lastFocusedEl?.focus();
+      // Notify other components that the nav drawer closed
+      window.BarterBobs.publish('drawer:close', { drawer: 'nav' });
+    }
+
+    _handleKeydown(event) {
+      if (event.key === 'Escape' && this.drawer?.getAttribute('aria-hidden') === 'false') {
+        this.close();
+      }
+    }
+  }
+
+  customElements.define('nav-drawer', NavDrawer);
+</script>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Navigation menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cart",
+      "label": "Show cart icon",
+      "default": true
+    }
+  ],
+  "enabled_on": {
+    "groups": ["header"]
+  }
+}
+{% endschema %}

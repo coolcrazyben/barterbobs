@@ -2,3 +2,10 @@
 # Ref: https://shopify.dev/docs/themes/tools/theme-check
 ignore:
   - config/settings_data.json
+
+# Google Fonts is the intentional font strategy (Newsreader + Inter via preconnect/preload).
+# RemoteAsset and AssetPreload warnings are expected and acceptable for this project.
+RemoteAsset:
+  enabled: false
+AssetPreload:
+  enabled: false

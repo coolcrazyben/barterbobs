@@ -1,6 +1,9 @@
 {
   "general": {
-    "skip_to_content": "Skip to content"
+    "skip_to_content": "Skip to content",
+    "meta": {
+      "page": "Page {{ page_number }}"
+    }
   },
   "header": {
     "open_navigation": "Open navigation",
