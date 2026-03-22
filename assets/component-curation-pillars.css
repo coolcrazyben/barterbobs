@@ -1,2 +1,81 @@
 /* assets/component-curation-pillars.css — Curation Pillars section styles */
-/* Full implementation in plan 02-01, Task 2 */
+
+.section-curation-pillars {
+  padding: var(--section-gap, 12rem) var(--space-6, 1.5rem);
+  background: var(--color-surface);
+}
+
+.curation-pillars__inner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.curation-pillars__headline {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 700;
+  color: var(--color-text);
+  text-align: center;
+  margin: 0 0 var(--space-12, 3rem);
+}
+
+.curation-pillars__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-8, 2rem);
+}
+
+.pillar-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-4, 1rem);
+  padding: var(--space-8, 2rem);
+  background: var(--color-surface);
+  border-radius: var(--radius-lg, 1.5rem);
+}
+
+.pillar-card__icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  background: var(--color-brand-primary);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.pillar-card__icon {
+  font-size: 1.75rem;
+  color: #fff;
+}
+
+.pillar-card__headline {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.pillar-card__body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+  .section-curation-pillars {
+    padding: var(--section-gap-sm, 6rem) var(--space-4, 1rem);
+  }
+
+  .curation-pillars__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-6, 1.5rem);
+  }
+}

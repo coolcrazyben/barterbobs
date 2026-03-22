@@ -6,7 +6,21 @@
 {{ 'component-cta-banner.css' | asset_url | stylesheet_tag }}
 
 <section class="section-cta-banner" data-section-id="{{ section.id }}">
-  <!-- Implementation in Task 2 -->
+  <div class="cta-banner__outer">
+    <div class="cta-banner__inner">
+      {%- if section.settings.headline != blank -%}
+        <h2 class="cta-banner__headline">{{ section.settings.headline }}</h2>
+      {%- endif -%}
+      {%- if section.settings.offer_copy != blank -%}
+        <p class="cta-banner__offer">{{ section.settings.offer_copy }}</p>
+      {%- endif -%}
+      {%- if section.settings.cta_label != blank -%}
+        <a href="{{ section.settings.cta_url }}" class="btn btn--white">
+          {{ section.settings.cta_label }}
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
 </section>
 
 {% schema %}

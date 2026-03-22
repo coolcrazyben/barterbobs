@@ -6,7 +6,35 @@
 {{ 'component-category-browse.css' | asset_url | stylesheet_tag }}
 
 <section class="section-category-browse" data-section-id="{{ section.id }}">
-  <!-- Implementation in Task 2 -->
+  <div class="category-browse__inner">
+    {%- if section.settings.headline != blank -%}
+      <h2 class="category-browse__headline">{{ section.settings.headline }}</h2>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="category-browse__grid">
+        {%- for block in section.blocks -%}
+          <a
+            href="{{ block.settings.link }}"
+            class="category-card"
+            {{ block.shopify_attributes }}
+          >
+            <div class="category-card__image-wrapper">
+              {%- if block.settings.image != blank -%}
+                {%- assign category_image_alt = block.settings.label | escape -%}
+                {{ block.settings.image | image_url: width: 600 | image_tag: class: 'category-card__image', alt: category_image_alt, loading: 'lazy', width: 600, height: 800 }}
+              {%- else -%}
+                {{ 'collection-1' | placeholder_svg_tag: 'category-card__image category-card__image--placeholder' }}
+              {%- endif -%}
+            </div>
+            {%- if block.settings.label != blank -%}
+              <span class="category-card__label">{{ block.settings.label }}</span>
+            {%- endif -%}
+          </a>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
 </section>
 
 {% schema %}

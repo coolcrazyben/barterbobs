@@ -1,2 +1,61 @@
 /* assets/component-cta-banner.css — CTA Banner section styles */
-/* Full implementation in plan 02-01, Task 2 */
+
+.section-cta-banner {
+  padding: var(--section-gap-sm, 6rem) var(--space-6, 1.5rem);
+}
+
+.cta-banner__outer {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.cta-banner__inner {
+  background: var(--color-brand-primary);
+  border-radius: 2rem;
+  padding: var(--space-16, 4rem) var(--space-8, 2rem);
+  color: #fff;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4, 1rem);
+}
+
+.cta-banner__headline {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: #fff;
+  margin: 0;
+}
+
+.cta-banner__offer {
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+}
+
+.btn--white {
+  background: #fff;
+  color: var(--color-brand-primary);
+  border: none;
+  margin-top: var(--space-4, 1rem);
+}
+
+.btn--white:hover {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+  .section-cta-banner {
+    padding: var(--section-gap-sm, 6rem) var(--space-4, 1rem);
+  }
+
+  .cta-banner__inner {
+    padding: var(--space-10, 2.5rem) var(--space-6, 1.5rem);
+    border-radius: 1.25rem;
+  }
+}

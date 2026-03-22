@@ -1,2 +1,114 @@
 /* assets/component-hero.css — Hero section styles */
-/* Full implementation in plan 02-01, Task 2 */
+
+.section-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-12, 3rem);
+  padding: var(--section-gap, 12rem) var(--space-6, 1.5rem);
+  align-items: center;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.hero__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6, 1.5rem);
+}
+
+.hero__headline {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.hero__subheadline {
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  color: var(--color-text-secondary);
+  max-width: 40ch;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.hero__ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4, 1rem);
+  align-items: center;
+}
+
+/* Shared button styles — used by hero and CTA banner */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.875rem 2rem;
+  border-radius: 100px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1;
+  text-decoration: none;
+  transition: var(--transition-base);
+  cursor: pointer;
+  border: none;
+}
+
+.btn--primary {
+  background: var(--color-brand-primary);
+  color: #fff;
+  border: none;
+}
+
+.btn--primary:hover {
+  opacity: 0.9;
+}
+
+.btn--outline {
+  background: transparent;
+  color: var(--color-brand-primary);
+  border: 2px solid var(--color-brand-primary);
+}
+
+.btn--outline:hover {
+  background: var(--color-brand-primary);
+  color: #fff;
+}
+
+.hero__media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero__image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius-lg, 1.5rem);
+  display: block;
+}
+
+.hero__image--placeholder {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-lg, 1.5rem);
+  background: var(--color-surface);
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+  .section-hero {
+    grid-template-columns: 1fr;
+    padding: var(--section-gap-sm, 6rem) var(--space-4, 1rem);
+    gap: var(--space-8, 2rem);
+  }
+
+  .hero__media {
+    order: -1;
+  }
+}

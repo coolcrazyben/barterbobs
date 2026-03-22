@@ -6,7 +6,29 @@
 {{ 'component-how-it-works.css' | asset_url | stylesheet_tag }}
 
 <section class="section-how-it-works" data-section-id="{{ section.id }}">
-  <!-- Implementation in Task 2 -->
+  <div class="how-it-works__inner">
+    {%- if section.settings.headline != blank -%}
+      <h2 class="how-it-works__headline">{{ section.settings.headline }}</h2>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <ol class="steps-list">
+        {%- for block in section.blocks -%}
+          <li class="step-card" {{ block.shopify_attributes }}>
+            {%- if block.settings.step_number != blank -%}
+              <div class="step-number" aria-hidden="true">{{ block.settings.step_number }}</div>
+            {%- endif -%}
+            {%- if block.settings.step_headline != blank -%}
+              <h3 class="step-headline">{{ block.settings.step_headline }}</h3>
+            {%- endif -%}
+            {%- if block.settings.step_body != blank -%}
+              <p class="step-body">{{ block.settings.step_body }}</p>
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ol>
+    {%- endif -%}
+  </div>
 </section>
 
 {% schema %}

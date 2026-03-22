@@ -1,2 +1,85 @@
 /* assets/component-how-it-works.css — How It Works section styles */
-/* Full implementation in plan 02-01, Task 2 */
+
+.section-how-it-works {
+  padding: var(--section-gap, 12rem) var(--space-6, 1.5rem);
+  background: var(--color-surface);
+}
+
+.how-it-works__inner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.how-it-works__headline {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 700;
+  color: var(--color-text);
+  text-align: center;
+  margin: 0 0 var(--space-12, 3rem);
+}
+
+.steps-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-8, 2rem);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.step-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-4, 1rem);
+}
+
+.step-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-brand-primary), var(--color-brand-secondary, #ff6b6b));
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.step-headline {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.step-body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin: 0;
+  max-width: 28ch;
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+  .section-how-it-works {
+    padding: var(--section-gap-sm, 6rem) var(--space-4, 1rem);
+  }
+
+  .steps-list {
+    grid-template-columns: 1fr;
+    gap: var(--space-6, 1.5rem);
+  }
+
+  .step-body {
+    max-width: none;
+  }
+}

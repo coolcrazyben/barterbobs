@@ -1,2 +1,93 @@
 /* assets/component-brand-story.css — Brand Story section styles */
-/* Full implementation in plan 02-01, Task 2 */
+
+.section-brand-story {
+  padding: var(--section-gap, 12rem) var(--space-6, 1.5rem);
+}
+
+.brand-story__inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-16, 4rem);
+  align-items: center;
+}
+
+.brand-story__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6, 1.5rem);
+}
+
+.brand-story__headline {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.brand-story__body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+}
+
+.brand-story__body p {
+  margin: 0 0 1rem;
+}
+
+.brand-story__body p:last-child {
+  margin-bottom: 0;
+}
+
+.brand-story__pull-quote {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-style: italic;
+  color: var(--color-brand-primary);
+  border-left: 4px solid var(--color-brand-primary);
+  padding-left: var(--space-6, 1.5rem);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.brand-story__images {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-4, 1rem);
+}
+
+.brand-story__image-cell {
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-md, 1rem);
+  overflow: hidden;
+}
+
+.brand-story__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: var(--radius-md, 1rem);
+}
+
+.brand-story__image--placeholder {
+  width: 100%;
+  height: 100%;
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+  .section-brand-story {
+    padding: var(--section-gap-sm, 6rem) var(--space-4, 1rem);
+  }
+
+  .brand-story__inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-8, 2rem);
+  }
+}

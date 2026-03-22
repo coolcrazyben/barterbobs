@@ -4,9 +4,39 @@
 {%- endcomment -%}
 
 {{ 'component-featured-products.css' | asset_url | stylesheet_tag }}
+{{ 'component-product-card.css' | asset_url | stylesheet_tag }}
+
+{%- assign featured_collection = section.settings.collection -%}
 
 <section class="section-featured-products" data-section-id="{{ section.id }}">
-  <!-- Implementation in Task 2 -->
+  <div class="featured-products__inner">
+    {%- if section.settings.headline != blank -%}
+      <h2 class="featured-products__headline">{{ section.settings.headline }}</h2>
+    {%- endif -%}
+    {%- if section.settings.subheadline != blank -%}
+      <p class="featured-products__subheadline">{{ section.settings.subheadline }}</p>
+    {%- endif -%}
+
+    <div class="featured-products__grid">
+      {%- if featured_collection != blank and featured_collection.products_count > 0 -%}
+        {%- for product in featured_collection.products limit: 4 -%}
+          {% render 'product-card', product: product %}
+        {%- endfor -%}
+      {%- else -%}
+        {%- for i in (1..4) -%}
+          <article class="product-card product-card--placeholder">
+            <div class="product-card__image-wrapper">
+              {{ 'product-1' | placeholder_svg_tag: 'product-card__image' }}
+            </div>
+            <div class="product-card__info">
+              <h3 class="product-card__title"><a href="#">Product Title</a></h3>
+              <p class="product-card__price">$0.00</p>
+            </div>
+          </article>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </div>
 </section>
 
 {% schema %}

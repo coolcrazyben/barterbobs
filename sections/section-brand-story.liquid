@@ -6,7 +6,34 @@
 {{ 'component-brand-story.css' | asset_url | stylesheet_tag }}
 
 <section class="section-brand-story" data-section-id="{{ section.id }}">
-  <!-- Implementation in Task 2 -->
+  <div class="brand-story__inner">
+    <div class="brand-story__content">
+      {%- if section.settings.headline != blank -%}
+        <h2 class="brand-story__headline">{{ section.settings.headline }}</h2>
+      {%- endif -%}
+      {%- if section.settings.body != blank -%}
+        <div class="brand-story__body">{{ section.settings.body }}</div>
+      {%- endif -%}
+      {%- if section.settings.pull_quote != blank -%}
+        <blockquote class="brand-story__pull-quote">{{ section.settings.pull_quote }}</blockquote>
+      {%- endif -%}
+    </div>
+
+    <div class="brand-story__images">
+      {%- assign image_ids = 'image_1,image_2,image_3,image_4' | split: ',' -%}
+      {%- for image_id in image_ids -%}
+        {%- assign image = section.settings[image_id] -%}
+        <div class="brand-story__image-cell">
+          {%- if image != blank -%}
+            {%- assign brand_image_alt = image.alt | escape -%}
+            {{ image | image_url: width: 600 | image_tag: class: 'brand-story__image', alt: brand_image_alt, loading: 'lazy', width: 600, height: 600 }}
+          {%- else -%}
+            {{ 'lifestyle-1' | placeholder_svg_tag: 'brand-story__image brand-story__image--placeholder' }}
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
 </section>
 
 {% schema %}

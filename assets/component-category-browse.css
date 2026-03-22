@@ -1,2 +1,99 @@
 /* assets/component-category-browse.css — Category Browse section styles */
-/* Full implementation in plan 02-01, Task 2 */
+
+.section-category-browse {
+  padding: var(--section-gap, 12rem) var(--space-6, 1.5rem);
+}
+
+.category-browse__inner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.category-browse__headline {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 700;
+  color: var(--color-text);
+  text-align: center;
+  margin: 0 0 var(--space-12, 3rem);
+}
+
+.category-browse__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-6, 1.5rem);
+  align-items: start;
+}
+
+/* Staggered design signature: even cards offset down */
+.category-card:nth-child(even) {
+  margin-top: 3rem;
+}
+
+.category-card {
+  display: block;
+  text-decoration: none;
+  border-radius: var(--radius-lg, 1.5rem);
+  overflow: hidden;
+  position: relative;
+  transition: var(--transition-base);
+}
+
+.category-card:hover {
+  transform: translateY(-4px);
+}
+
+.category-card__image-wrapper {
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: var(--radius-lg, 1.5rem);
+}
+
+.category-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-base);
+  display: block;
+}
+
+.category-card__image--placeholder {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.category-card:hover .category-card__image {
+  transform: scale(1.05);
+}
+
+.category-card__label {
+  display: block;
+  margin-top: var(--space-3, 0.75rem);
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-text);
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 1023px) {
+  .category-browse__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .section-category-browse {
+    padding: var(--section-gap-sm, 6rem) var(--space-4, 1rem);
+  }
+
+  .category-browse__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .category-card:nth-child(even) {
+    margin-top: 0;
+  }
+}

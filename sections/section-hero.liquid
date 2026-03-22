@@ -6,7 +6,37 @@
 {{ 'component-hero.css' | asset_url | stylesheet_tag }}
 
 <section class="section-hero" data-section-id="{{ section.id }}">
-  <!-- Implementation in Task 2 -->
+  <div class="hero__content">
+    {%- if section.settings.headline != blank -%}
+      <h1 class="hero__headline">{{ section.settings.headline }}</h1>
+    {%- endif -%}
+
+    {%- if section.settings.subheadline != blank -%}
+      <p class="hero__subheadline">{{ section.settings.subheadline }}</p>
+    {%- endif -%}
+
+    <div class="hero__ctas">
+      {%- if section.settings.cta_primary_label != blank -%}
+        <a href="{{ section.settings.cta_primary_url }}" class="btn btn--primary">
+          {{ section.settings.cta_primary_label }}
+        </a>
+      {%- endif -%}
+      {%- if section.settings.cta_secondary_label != blank -%}
+        <a href="{{ section.settings.cta_secondary_url }}" class="btn btn--outline">
+          {{ section.settings.cta_secondary_label }}
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+
+  <div class="hero__media">
+    {%- if section.settings.hero_image != blank -%}
+      {%- assign hero_image_alt = section.settings.hero_image.alt | escape -%}
+      {{ section.settings.hero_image | image_url: width: 1200 | image_tag: class: 'hero__image', loading: 'eager', fetchpriority: 'high', width: section.settings.hero_image.width, height: section.settings.hero_image.height, alt: hero_image_alt }}
+    {%- else -%}
+      {{ 'lifestyle-1' | placeholder_svg_tag: 'hero__image hero__image--placeholder' }}
+    {%- endif -%}
+  </div>
 </section>
 
 {% schema %}

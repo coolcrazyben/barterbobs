@@ -6,7 +6,48 @@
 {{ 'component-testimonials.css' | asset_url | stylesheet_tag }}
 
 <section class="section-testimonials" data-section-id="{{ section.id }}">
-  <!-- Implementation in Task 2 -->
+  <div class="testimonials__inner">
+    {%- if section.settings.headline != blank -%}
+      <h2 class="testimonials__headline">{{ section.settings.headline }}</h2>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="testimonials__grid">
+        {%- for block in section.blocks -%}
+          <div class="testimonial-card" {{ block.shopify_attributes }}>
+            <div class="testimonial-card__stars" aria-label="{{ block.settings.rating }} out of 5 stars">
+              {%- for i in (1..5) -%}
+                {%- if i <= block.settings.rating -%}
+                  <span class="star star--filled" aria-hidden="true">&#9733;</span>
+                {%- else -%}
+                  <span class="star star--empty" aria-hidden="true">&#9734;</span>
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
+
+            {%- if block.settings.quote != blank -%}
+              <blockquote class="testimonial-card__quote">{{ block.settings.quote }}</blockquote>
+            {%- endif -%}
+
+            <div class="testimonial-card__author">
+              {%- if block.settings.avatar != blank -%}
+                {%- assign testimonial_avatar_alt = block.settings.customer_name | escape -%}
+                {{ block.settings.avatar | image_url: width: 60 | image_tag: class: 'testimonial-avatar', alt: testimonial_avatar_alt, loading: 'lazy', width: 60, height: 60 }}
+              {%- endif -%}
+              <cite class="testimonial-card__cite">
+                {%- if block.settings.customer_name != blank -%}
+                  <span class="testimonial-card__name">{{ block.settings.customer_name }}</span>
+                {%- endif -%}
+                {%- if block.settings.location != blank -%}
+                  <span class="testimonial-card__location">{{ block.settings.location }}</span>
+                {%- endif -%}
+              </cite>
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
 </section>
 
 {% schema %}
