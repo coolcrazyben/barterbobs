@@ -1,0 +1,73 @@
+{%- comment -%}
+  snippets/filter-groups.liquid
+  Filter groups — rendered in both desktop sidebar and mobile drawer
+{%- endcomment -%}
+
+{%- for filter in collection.filters -%}
+  <div class="filter-group" data-filter-type="{{ filter.type }}">
+    <button class="filter-group__title" aria-expanded="true"
+            aria-controls="filter-group-{{ forloop.index }}">
+      {{ filter.label }}
+    </button>
+    <div class="filter-group__options" id="filter-group-{{ forloop.index }}">
+
+      {%- if filter.type == 'list' -%}
+        {%- for value in filter.values -%}
+          <label class="filter-option">
+            <input
+              class="filter-checkbox"
+              type="checkbox"
+              name="{{ value.param_name }}"
+              value="{{ value.value }}"
+              {% if value.active %}checked{% endif %}
+              aria-label="{{ value.label }} ({{ value.count }} products)"
+            >
+            <span class="filter-option__label">{{ value.label }}</span>
+            <span class="filter-option__count">({{ value.count }})</span>
+          </label>
+        {%- endfor -%}
+
+      {%- elsif filter.type == 'price_range' -%}
+        <div class="price-range-filter" data-price-range>
+          <div class="price-range__inputs">
+            <input type="number" class="price-range__min"
+              name="{{ filter.min_value.param_name }}"
+              value="{{ filter.min_value.value | default: filter.range_min }}"
+              min="{{ filter.range_min }}" max="{{ filter.range_max }}"
+              aria-label="Minimum price">
+            <span>-</span>
+            <input type="number" class="price-range__max"
+              name="{{ filter.max_value.param_name }}"
+              value="{{ filter.max_value.value | default: filter.range_max }}"
+              min="{{ filter.range_min }}" max="{{ filter.range_max }}"
+              aria-label="Maximum price">
+          </div>
+          <div class="price-range__slider" data-price-slider
+            data-min="{{ filter.range_min }}"
+            data-max="{{ filter.range_max }}"
+            data-current-min="{{ filter.min_value.value | default: filter.range_min }}"
+            data-current-max="{{ filter.max_value.value | default: filter.range_max }}">
+            <div class="price-range__track">
+              <div class="price-range__fill" data-slider-fill></div>
+            </div>
+            <input type="range" class="price-range__thumb price-range__thumb--min"
+              data-thumb="min"
+              name="{{ filter.min_value.param_name }}"
+              min="{{ filter.range_min }}" max="{{ filter.range_max }}"
+              value="{{ filter.min_value.value | default: filter.range_min }}"
+              aria-label="Minimum price slider">
+            <input type="range" class="price-range__thumb price-range__thumb--max"
+              data-thumb="max"
+              name="{{ filter.max_value.param_name }}"
+              min="{{ filter.range_min }}" max="{{ filter.range_max }}"
+              value="{{ filter.max_value.value | default: filter.range_max }}"
+              aria-label="Maximum price slider">
+          </div>
+        </div>
+      {%- endif -%}
+
+    </div>
+  </div>
+{%- else -%}
+  <p class="filter-sidebar__empty">No filters available.</p>
+{%- endfor -%}
