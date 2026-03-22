@@ -41,16 +41,16 @@ Plans:
 **Depends on**: Phase 1
 **Requirements**: HOME-01, HOME-02, HOME-03, HOME-04, HOME-05, PLPX-01, PLPX-02, PLPX-03, PLPX-04
 **Success Criteria** (what must be TRUE):
-  1. The homepage renders all five sections (hero, featured products bento grid, How It Works, testimonials) matching the barterbobs_main_landing_page Figma export — all fields are editable in the Theme Editor
+  1. The homepage renders all 8 sections (Hero, Curation Pillars, Category Browse, Featured Products, Brand Story, How It Works, Testimonials, CTA Banner) matching the barterbobs_main_landing_page Figma export — all fields are editable in the Theme Editor
   2. The hero image loads with `loading="eager"` (not lazy) and Lighthouse reports no LCP penalty from the hero
   3. The collection page renders a 4-column grid at 1280px, 2-column at 768px, and 1-column at 375px with product cards that have hover scale on images
   4. Clicking Quick Add on a product card adds the item to the cart via AJAX without leaving the collection page, and the cart item count badge in the header updates immediately
   5. The collection sidebar displays filter options from the Shopify Search and Discovery app; selecting a filter narrows the product grid without a full page reload
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 02-01: Homepage sections (hero, featured bento grid, How It Works, testimonials)
-- [ ] 02-02: Product card snippet and PLP collection page with grid, filters, and Quick Add
+- [ ] 02-01-PLAN.md — All 8 homepage sections (Hero, Curation Pillars, Category Browse, Featured Products, Brand Story, How It Works, Testimonials, CTA Banner) and shared product-card snippet
+- [ ] 02-02-PLAN.md — PLP collection page with responsive grid, filter sidebar (desktop + mobile drawer), and Quick Add with variant picker
 
 ### Phase 3: PDP + Cart
 **Goal**: A shopper can view a product, select a subscription frequency, add it to the cart via AJAX, and manage their cart in a drawer — the complete purchase flow works end-to-end without a page reload
